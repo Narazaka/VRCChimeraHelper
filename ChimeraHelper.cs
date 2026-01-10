@@ -28,6 +28,8 @@ namespace Narazaka.VRChat.Chimera
 
         public bool ReplaceFaceMeshFirst = true;
 
+        public string[] DestroyObjectPaths = new string[0];
+
         public void CopyFromVRCAvatarDescriptor(VRCAvatarDescriptor descriptor)
         {
             ViewPosition = descriptor.ViewPosition;

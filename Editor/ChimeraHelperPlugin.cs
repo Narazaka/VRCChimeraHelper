@@ -46,6 +46,17 @@ namespace Narazaka.VRChat.Chimera.Editor
                         }
                     }
                 }
+                if (helper.DestroyObjectPaths != null)
+                {
+                    foreach (var path in helper.DestroyObjectPaths)
+                    {
+                        var obj = ctx.AvatarRootTransform.Find(path);
+                        if (obj != null)
+                        {
+                            Object.DestroyImmediate(obj.gameObject);
+                        }
+                    }
+                }
             }
             Object.DestroyImmediate(helper);
         }
