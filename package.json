@@ -1,6 +1,6 @@
 {
   "name": "net.narazaka.vrchat.chimera",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "displayName": "VRC Chimera Helper",
   "description": "VRC Chimera Helper",
   "author": {
@@ -12,7 +12,7 @@
   "url" : "https://github.com/Narazaka/VRCChimeraHelper.git",
   "unity": "2022.3",
   "vpmDependencies": {
-    "com.vrchat.avatars": ">=3.7.5",
-    "com.vrchat.worlds": ">=3.7.5"
+    "com.vrchat.avatars": ">=3.9.0",
+    "nadena.dev.ndmf": ">=1.10.1"
   }
 }

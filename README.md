@@ -1,6 +1,6 @@
 # VRC Chimera Helper
 
-desc
+キメラアバターの顔をポン入れするだけで、素体側のVRC Avatar Descriptorを上書きするNDMFプラグイン
 
 ## Install
 
@@ -16,7 +16,11 @@ https://github.com/Narazaka/VRCChimeraHelper/releases/latest から `net.narazak
 
 ## Usage
 
-TODO
+1. キメラアバター（顔側）のルート（VRC Avatar Descriptorがあるところ）でChimera HelperをAdd Component
+2. Copy from VRC Avatar Descriptorを押して値をコピー
+3. Delete VRC Avatar Descriptorを押してキメラアバターのVRC Avatar Descriptorを削除
+4. 素体側にポン入れ
+   - . 適宜MA Object Toggleとかで素体側のいらんやつを消すとよい
 
 ## License
 
