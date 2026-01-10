@@ -26,6 +26,8 @@ namespace Narazaka.VRChat.Chimera
 
         public VRCAvatarDescriptor.CustomEyeLookSettings customEyeLookSettings;
 
+        public bool ReplaceFaceMeshFirst = true;
+
         public void CopyFromVRCAvatarDescriptor(VRCAvatarDescriptor descriptor)
         {
             ViewPosition = descriptor.ViewPosition;

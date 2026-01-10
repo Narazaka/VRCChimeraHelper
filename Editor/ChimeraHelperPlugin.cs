@@ -13,7 +13,7 @@ namespace Narazaka.VRChat.Chimera.Editor
 
         protected override void Configure()
         {
-            InPhase(BuildPhase.Resolving).BeforePlugin("nadena.dev.modular-avatar").Run(DisplayName, SetupChimeraHelper);
+            InPhase(BuildPhase.Resolving).BeforePlugin("nadena.dev.modular-avatar").BeforePlugin("aoyon.facetune").Run(DisplayName, SetupChimeraHelper);
         }
 
         void SetupChimeraHelper(BuildContext ctx)
@@ -33,6 +33,19 @@ namespace Narazaka.VRChat.Chimera.Editor
             if (descriptor != null)
             {
                 helper.ApplyToVRCAvatarDescriptor(descriptor);
+                if (helper.ReplaceFaceMeshFirst && helper.VisemeSkinnedMesh != null && helper.VisemeSkinnedMesh.sharedMesh != null)
+                {
+                    var faceName = helper.VisemeSkinnedMesh.name;
+                    var parentFace = ctx.AvatarRootTransform.Find(faceName);
+                    if (parentFace != null)
+                    {
+                        var parentFaceRenderer = parentFace.GetComponent<SkinnedMeshRenderer>();
+                        if (parentFaceRenderer != null)
+                        {
+                            parentFaceRenderer.sharedMesh = helper.VisemeSkinnedMesh.sharedMesh;
+                        }
+                    }
+                }
             }
             Object.DestroyImmediate(helper);
         }
