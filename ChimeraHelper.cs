@@ -6,6 +6,12 @@ namespace Narazaka.VRChat.Chimera
 {
     public class ChimeraHelper : MonoBehaviour, IEditorOnly
     {
+        public bool ReplaceFaceMeshFirst = true;
+
+        public string[] DestroyObjectPaths = new string[0];
+
+        // descriptor properties
+
         public Vector3 ViewPosition;
 
         public VRC_AvatarDescriptor.LipSyncStyle lipSync;
@@ -25,10 +31,6 @@ namespace Narazaka.VRChat.Chimera
         public bool enableEyeLook;
 
         public VRCAvatarDescriptor.CustomEyeLookSettings customEyeLookSettings;
-
-        public bool ReplaceFaceMeshFirst = true;
-
-        public string[] DestroyObjectPaths = new string[0];
 
         public void CopyFromVRCAvatarDescriptor(VRCAvatarDescriptor descriptor)
         {
