@@ -57,8 +57,56 @@ namespace Narazaka.VRChat.Chimera.Editor
                         }
                     }
                 }
+                
+                var motchiriType = MotchiriShaderMaType();
+                if (motchiriType != null && helper.WillBeDestroyed_MotchiriMask != null)
+                {
+                    var motchiriObj = ctx.AvatarRootTransform.Find("motchiri_shader_Setup");
+                    if (motchiriObj != null)
+                    {
+                        var motchiri = motchiriObj.GetComponent(motchiriType);
+                        if (motchiri != null)
+                        {
+                            var meshMaskField = MeshMaskField();
+                            var value = meshMaskField.GetValue(motchiri) as Texture2D[];
+                            if (value != null && value.Length >= 2)
+                            {
+                                value[1] = helper.WillBeDestroyed_MotchiriMask;
+                            }
+                        }
+                    }
+                }
             }
             Object.DestroyImmediate(helper);
+        }
+
+        static System.Type motchiriShaderMaType = null;
+        static bool motchiriShaderMaTypeResolved = false;
+        internal static System.Type MotchiriShaderMaType()
+        {
+            if (motchiriShaderMaTypeResolved)
+            {
+                return motchiriShaderMaType;
+            }
+            motchiriShaderMaTypeResolved = true;
+            var asms = System.AppDomain.CurrentDomain.GetAssemblies();
+            foreach (var asm in asms)
+            {
+                var type = asm.GetType("wataameya.motchiri_shader.ndmf.motchiri_shader_MA");
+                if (type != null)
+                {
+                    motchiriShaderMaType = type;
+                    break;
+                }
+            }
+            return motchiriShaderMaType;
+        }
+
+        static System.Reflection.FieldInfo MeshMaskField()
+        {
+            var type = MotchiriShaderMaType();
+            if (type == null) return null;
+            return type.GetField("_meshMask", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
         }
     }
 }

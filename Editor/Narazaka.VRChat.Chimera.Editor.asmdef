@@ -8,7 +8,8 @@
         "nadena.dev.ndmf.runtime",
         "nadena.dev.ndmf.vrchat",
         "nadena.dev.modular-avatar.core",
-        "Narazaka.VRChat.Chimera"
+        "Narazaka.VRChat.Chimera",
+        "wataameya.motchiri_shader.ndmf"
     ],
     "includePlatforms": [
         "Editor"

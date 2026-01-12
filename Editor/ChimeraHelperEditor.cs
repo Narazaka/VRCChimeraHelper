@@ -12,6 +12,7 @@ namespace Narazaka.VRChat.Chimera.Editor
     {
         SerializedProperty replaceFaceMeshFirst;
         SerializedProperty destroyObjectPaths;
+        SerializedProperty willBeDestroyed_MotchiriMask;
 
         SerializedProperty viewPosition;
         SerializedProperty lipSync;
@@ -28,6 +29,7 @@ namespace Narazaka.VRChat.Chimera.Editor
         {
             replaceFaceMeshFirst = serializedObject.FindProperty(nameof(ChimeraHelper.ReplaceFaceMeshFirst));
             destroyObjectPaths = serializedObject.FindProperty(nameof(ChimeraHelper.DestroyObjectPaths));
+            willBeDestroyed_MotchiriMask = serializedObject.FindProperty(nameof(ChimeraHelper.WillBeDestroyed_MotchiriMask));
 
             viewPosition = serializedObject.FindProperty(nameof(ChimeraHelper.ViewPosition));
             lipSync = serializedObject.FindProperty(nameof(ChimeraHelper.lipSync));
@@ -54,6 +56,11 @@ namespace Narazaka.VRChat.Chimera.Editor
             serializedObject.UpdateIfRequiredOrScript();
             EditorGUILayout.PropertyField(replaceFaceMeshFirst);
             EditorGUILayout.PropertyField(destroyObjectPaths, true);
+            if (ChimeraHelperPlugin.MotchiriShaderMaType() != null)
+            {
+                EditorGUILayout.PropertyField(willBeDestroyed_MotchiriMask, new GUIContent("motchiri face mask"));
+            }
+
             EditorGUILayout.Space();
             DrawVRCAvatarDescriptorLikeInspector();
             serializedObject.ApplyModifiedProperties();

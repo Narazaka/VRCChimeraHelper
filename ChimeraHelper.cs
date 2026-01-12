@@ -10,6 +10,8 @@ namespace Narazaka.VRChat.Chimera
 
         public string[] DestroyObjectPaths = new string[0];
 
+        public Texture2D WillBeDestroyed_MotchiriMask;
+
         // descriptor properties
 
         public Vector3 ViewPosition;
